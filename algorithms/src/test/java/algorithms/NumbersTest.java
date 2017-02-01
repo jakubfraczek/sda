@@ -18,10 +18,19 @@ public class NumbersTest {
 	public void evenTest() {
 		assertTrue(sut.isEven(2));
 	}
-	
+
 	@Test
 	public void oddTest() {
 		assertFalse(sut.isEven(3));
 	}
 
+	@Test
+	public void positiveAbsoluteNumberTest() {
+		assertEquals(2.5, sut.absoluteNumber(2.5), 0);
+	}
+
+	@Test
+	public void negativeAbsoluteNumberTest() {
+		assertEquals(2.5, sut.absoluteNumber(-2.5), 0);
+	}
 }

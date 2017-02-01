@@ -6,4 +6,8 @@ public class Numbers {
 		return (i % 2 == 0 ? true : false);
 	}
 
+	public Double absoluteNumber(Double d) {
+		return (d >= 0 ? d : -d);
+	}
+
 }
