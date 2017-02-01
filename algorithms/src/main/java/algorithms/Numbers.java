@@ -10,4 +10,15 @@ public class Numbers {
 		return (d >= 0 ? d : -d);
 	}
 
+	public int biggestCommonDivider(int i, int j) {
+		while (i != j) {
+			if (i > j) {
+				i -= j;
+			} else {
+				j -= i;
+			}
+		}
+		return i;
+	}
+
 }

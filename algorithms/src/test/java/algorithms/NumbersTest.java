@@ -33,4 +33,10 @@ public class NumbersTest {
 	public void negativeAbsoluteNumberTest() {
 		assertEquals(2.5, sut.absoluteNumber(-2.5), 0);
 	}
+	
+		
+	@Test
+	public void bigestCommonDividerTest() {
+		assertEquals(14, sut.biggestCommonDivider(42, 56));
+	}
 }
