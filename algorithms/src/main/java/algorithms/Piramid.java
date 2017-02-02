@@ -1,16 +1,9 @@
 package algorithms;
 
-import java.util.Scanner;
-
 public class Piramid {
 
-	public static void main(String[] args) {
-		int piramidLevels = userIntInput();
 
-		piramidDrow(piramidLevels);
-	}
-
-	private static void piramidDrow(int piramidLevels) {
+	public void piramidDrow(int piramidLevels) {
 		int i = 0;
 		while (i != piramidLevels) {
 			for (int j = 0; j <= i; ++j) {
@@ -29,11 +22,6 @@ public class Piramid {
 
 	}
 
-	private static int userIntInput() {
-		System.out.println("Podaj liczbę");
-		try (Scanner sc = new Scanner(System.in)) {
-			return Integer.parseInt(sc.nextLine());
-		}
-	}
+
 
 }
