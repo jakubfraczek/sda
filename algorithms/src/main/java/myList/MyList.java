@@ -1,41 +1,48 @@
 package myList;
 
 public class MyList {
-	
-	MyNode mHead;
+
+	MyNode mHead = new MyNode();
 	int mListSize = 0;
 	
-	public void addAtFront(Object value) {
-		MyNode newNode = new MyNode(value, mHead.getNext());
-		mHead = newNode;
-	}
-	
-	public void add(Object value) {
-		MyNode newNode;
-		if (mHead == null) {
-			newNode = new MyNode(value, mHead);
-			mHead = newNode;
-		} else {
-			MyNode tempNode = new MyNode(value, mHead.getNext());
-			while (tempNode.getNext() != null) {
-				tempNode.setNext(tempNode.getNext());
-			}
-			newNode = tempNode;
-		}
-	}
-	
-	public MyNode begin() {
+	private MyNode begin() {
 		return mHead;
 	}
 	
-	public void wypisz() {
+	public MyNode last() {
 		MyNode temp = begin();
 		while (temp.getNext() != null) {
+			temp = temp.getNext();
+		}
+		return temp;
+	}
+
+	public void addAtFront(Object value) {
+		mListSize++;
+		MyNode newNode = new MyNode(value, mHead.getNext());
+		mHead = newNode;
+	}
+
+	public void add(Object value) {
+		mListSize++;
+		MyNode newNode;
+		if (mHead.getValue() == null) {
+			newNode = new MyNode(value, mHead.getNext());
+			mHead = newNode;
+		} else {
+			newNode = new MyNode(value, last().getNext());
+			last().setNext(newNode);
+		}
+	}
+
+	public void wypisz() {
+		System.out.println("--------------------");
+		MyNode temp = begin();
+		for (int i = 1; i <= mListSize; i++) {
 			System.out.println(temp.getValue());
 			temp = temp.getNext();
 		}
-		
+
 	}
-	
 
 }

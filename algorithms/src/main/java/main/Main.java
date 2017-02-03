@@ -7,15 +7,15 @@ public class Main {
 	public static void main(String[] args) {
 		UserInput input = new UserInput();
 		
-		int dupa = input.userIntInput();
+		int inputNumber = input.userIntInput();
 		
-		MyList kupa = new MyList();
+		MyList myList = new MyList();
 		
-		for(int i = 0; i <= dupa; i++) {
-			kupa.add(input.userIntInput());
+		for(int i = 0; i < inputNumber; i++) {
+			myList.add(input.userIntInput());
 		}
 		
-		kupa.wypisz();
+		myList.wypisz();
 		
 	}
 }

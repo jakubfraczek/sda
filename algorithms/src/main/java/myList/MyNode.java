@@ -2,8 +2,8 @@ package myList;
 
 public class MyNode {
 
-	Object mValue = null;
-	MyNode mNext = null;
+	private Object mValue = null;
+	private MyNode mNext = null;
 
 	MyNode() {
 	}
