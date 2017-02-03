@@ -15,6 +15,8 @@ public class Main {
 			myList.add(input.userIntInput());
 		}
 		
+		myList.remove(input.userIntInput());
+		
 		myList.wypisz();
 		
 	}
