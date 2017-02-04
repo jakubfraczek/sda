@@ -21,10 +21,11 @@ public class MyListTest {
 		myStringList = new MyList();
 		for (int i = 0; i < 8; i++) {
 			myStringList.add("Kuba");
-			myStringList.add("huba");
+			myStringList.add("Jakub");
 		}
+		myStringList.add("Jakub");
 		myIntList2 = new MyList();
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 16; i++) {
 			if (i % 2 == 0) {
 				myIntList2.add(i);
 			}
@@ -80,7 +81,7 @@ public class MyListTest {
 
 	@Test
 	public void removeLastElementByNodeTest() {
-
+		fail("Not yet implemented");
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
@@ -112,22 +113,28 @@ public class MyListTest {
 
 	@Test
 	public void findByFistElementByValueTest() {
-		assertEquals(2, myIntList.getIndex(23));
+		assertEquals(2, myIntList.getIndexOf(23));
 	}
 
 	@Test 
 	public void findByFistElementByValueBoundaryTest() {
-		assertEquals(-1, myIntList.getIndex("e"));
+		assertEquals(-1, myIntList.getIndexOf("e"));
 	}
 
 	@Test
 	public void findAllElementsByValueTest() {
-		assertEquals(myIntList2, myStringList.getAllIndexes("Kuba"));
-
+		MyList allIndexesOf = myStringList.getAllIndexesOf("Kuba");
+		int length = allIndexesOf.length();
+		
+		assertEquals(8, length);
+		for (int i = 0; i < length; i++) {
+			assertEquals(myIntList2.getValue(i), allIndexesOf.getValue(i));
+		}
 	}
 
 	@Test
 	public void removeAllByValueTest() {
+		myStringList.removeAllOf("Kuba");
 		fail("Not yet implemented");
 	}
 

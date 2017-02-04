@@ -53,6 +53,10 @@ public class MyList {
 		beforeNode.setNext(findeNodeAtIndex(index + 1));
 		mListSize--;
 	}
+	
+	public void remove(Object value) {
+		
+	}
 
 	public Object getValue(int index) {
 		MyNode myNode = findeNodeAtIndex(index);
@@ -71,21 +75,13 @@ public class MyList {
 		return temp;
 	}
 
-	public void wypisz() {
-		System.out.println("--------------------");
-		for (int i = 1; i <= mListSize; i++) {
-			System.out.println(this.getValue(i));
-		}
-
-	}
-
 	public void addAtIndex(int index, Object value) {
 		MyNode temp = new MyNode(value, findeNodeAtIndex(index + 1));
 		findeNodeAtIndex(index - 1).setNext(temp);
 		mListSize++;
 	}
 
-	public int getIndex(Object value) {
+	public int getIndexOf(Object value) {
 		int index = 0;
 		MyNode temp = mHead;
 		while (temp != null) {
@@ -99,18 +95,23 @@ public class MyList {
 		return -1;
 	}
 
-	public MyList getAllIndexes(Object value) {
+	public MyList getAllIndexesOf(Object value) {
 		int index = 0;
 		MyList out = new MyList();
 		MyNode temp = begin();
-		while (temp.getNext() != null) {
-			if (temp.getValue() == value){
+		while (temp != null) {
+			if (temp.getValue().equals(value)) {
 				out.add(index);
 			}
 			temp = temp.getNext();
 			index++;
 		}
 		return out;
+	}
+
+	public void removeAllOf(Object value) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
