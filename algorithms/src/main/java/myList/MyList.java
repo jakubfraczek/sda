@@ -5,7 +5,7 @@ public class MyList {
 	private MyNode mHead = new MyNode();
 	private int mListSize = 0;
 
-	private MyNode begin() {
+	public MyNode begin() {
 		return mHead;
 	}
 
@@ -53,9 +53,13 @@ public class MyList {
 		beforeNode.setNext(findeNodeAtIndex(index + 1));
 		mListSize--;
 	}
-	
+
 	public Object getValue(int index) {
 		MyNode myNode = findeNodeAtIndex(index);
+		return myNode.getValue();
+	}
+
+	public Object getValue(MyNode myNode) {
 		return myNode.getValue();
 	}
 
@@ -73,6 +77,12 @@ public class MyList {
 			System.out.println(this.getValue(i));
 		}
 
+	}
+
+	public void addAtIndex(int index, Object value) {
+		MyNode temp = new MyNode(value, findeNodeAtIndex(index + 1));
+		findeNodeAtIndex(index - 1).setNext(temp);
+		mListSize++;
 	}
 
 }
