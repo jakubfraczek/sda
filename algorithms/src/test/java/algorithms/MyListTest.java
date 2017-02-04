@@ -74,13 +74,21 @@ public class MyListTest {
 	}
 
 	@Test
-	public void removeLastElementByIndexTest() {
-		myIntList.remove(2);
+	public void removeElementByIndexTest() {
+		myIntList.remove(1);
 		assertEquals(2, myIntList.length());
+		assertEquals(23, myIntList.getValue(1));
 	}
 
 	@Test
-	public void removeLastElementByNodeTest() {
+	public void removeElementByValueTest() {
+		myIntList.removeValue(22);
+		assertEquals(2, myIntList.length());
+		assertEquals(23, myIntList.getValue(1));
+	}
+	
+	@Test
+	public void removeElementByNodeTest() {
 		fail("Not yet implemented");
 	}
 

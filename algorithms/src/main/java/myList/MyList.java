@@ -53,9 +53,15 @@ public class MyList {
 		beforeNode.setNext(findeNodeAtIndex(index + 1));
 		mListSize--;
 	}
-	
-	public void remove(Object value) {
-		
+
+	public void removeValue(int i) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void removeAllOf(Object value) {
+		// TODO Auto-generated method stub
+
 	}
 
 	public Object getValue(int index) {
@@ -108,10 +114,4 @@ public class MyList {
 		}
 		return out;
 	}
-
-	public void removeAllOf(Object value) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
