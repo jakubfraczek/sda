@@ -85,4 +85,32 @@ public class MyList {
 		mListSize++;
 	}
 
+	public int getIndex(Object value) {
+		int index = 0;
+		MyNode temp = mHead;
+		while (temp != null) {
+			if (value != temp.getValue()) {
+				temp = temp.getNext();
+			} else {
+				return index;
+			}
+			index++;
+		}
+		return -1;
+	}
+
+	public MyList getAllIndexes(Object value) {
+		int index = 0;
+		MyList out = new MyList();
+		MyNode temp = begin();
+		while (temp.getNext() != null) {
+			if (temp.getValue() == value){
+				out.add(index);
+			}
+			temp = temp.getNext();
+			index++;
+		}
+		return out;
+	}
+
 }
