@@ -70,7 +70,7 @@ public class MyListTest {
 	public void addElementAtIndexTest() {
 		myIntList.addAtIndex(2, 24);
 		assertEquals(4, myIntList.length());
-		assertEquals(24, myIntList.getValue(myIntList.last()));
+		assertEquals(24, myIntList.getValue(2));
 	}
 
 	@Test
@@ -86,7 +86,7 @@ public class MyListTest {
 		assertEquals(2, myIntList.length());
 		assertEquals(23, myIntList.getValue(1));
 	}
-	
+
 	@Test
 	public void removeElementByNodeTest() {
 		fail("Not yet implemented");
@@ -94,7 +94,7 @@ public class MyListTest {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void toBigIndextest() {
-		myIntList.remove(3);
+		myIntList.getValue(3);
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
@@ -102,10 +102,15 @@ public class MyListTest {
 		myIntList.remove(-2);
 	}
 
-	@Test
-	public void clearTest() {
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void clearIndexTest() {
 		myIntList.clear();
-		assertEquals(null, myIntList.getValue(0));
+		myIntList.getValue(0);
+	}
+
+	@Test
+	public void clearLengthTest() {
+		myIntList.clear();
 		assertEquals(0, myIntList.length());
 	}
 
@@ -124,8 +129,8 @@ public class MyListTest {
 		assertEquals(2, myIntList.getIndexOf(23));
 	}
 
-	@Test 
-	public void findByFistElementByValueBoundaryTest() {
+	@Test
+	public void findByFistElementByValueBoundTest() {
 		assertEquals(-1, myIntList.getIndexOf("e"));
 	}
 
@@ -133,7 +138,7 @@ public class MyListTest {
 	public void findAllElementsByValueTest() {
 		MyList allIndexesOf = myStringList.getAllIndexesOf("Kuba");
 		int length = allIndexesOf.length();
-		
+
 		assertEquals(8, length);
 		for (int i = 0; i < length; i++) {
 			assertEquals(myIntList2.getValue(i), allIndexesOf.getValue(i));
