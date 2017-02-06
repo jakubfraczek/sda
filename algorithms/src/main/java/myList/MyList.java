@@ -5,7 +5,7 @@ public class MyList {
 	private MyNode mHead = new MyNode();
 	private int mListSize = 0;
 
-	public MyNode begin() {
+	private MyNode begin() {
 		return mHead;
 	}
 
@@ -47,36 +47,33 @@ public class MyList {
 
 	public void remove(int index) {
 		isOutOfBounds(index);
-		MyNode beforeNode = findeNodeAtIndex(index - 1);
-		beforeNode.setNext(findeNodeAtIndex(index + 1));
-		mListSize--;
-	}
-
-	private void isOutOfBounds(int index) {
-		if (index < 0 || index >= mListSize) {
-			throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + mListSize);
+		if (index == 0) {
+			mHead = findeNodeAtIndex(1);
+			mListSize--;
+		} else {
+			MyNode beforeNode = findeNodeAtIndex(index - 1);
+			beforeNode.setNext(findeNodeAtIndex(index + 1));
+			mListSize--;
 		}
 	}
 
 	public void removeValue(Object value) {
-		MyNode temp = mHead.getNext();
-		MyNode tempBefore = mHead;
-		while (temp != null) {
-			if (value != temp.getValue()) {
-				temp = temp.getNext();
-				tempBefore = tempBefore.getNext();
-			} else {
-				tempBefore.setNext(temp.getNext());
-				temp.setNext(null);
-				mListSize--;
-				break;
-			}
-		}
+		int index = getIndexOf(value);
+		remove(index);
 	}
 
 	public void removeAllOf(Object value) {
-		// TODO Auto-generated method stub
-
+		MyNode temp = mHead;
+		while (temp != null) {
+			if (temp.getValue() == value){
+				MyNode next = temp.getNext();
+				removeValue(value);
+				temp = next;
+			} else {
+				temp = temp.getNext();
+			}
+			
+		}
 	}
 
 	public Object getValue(int index) {
@@ -86,15 +83,6 @@ public class MyList {
 
 	public Object getValue(MyNode myNode) {
 		return myNode.getValue();
-	}
-
-	private MyNode findeNodeAtIndex(int index) {
-		isOutOfBounds(index);
-		MyNode temp = begin();
-		for (int i = 0; i < index; i++) {
-			temp = temp.getNext();
-		}
-		return temp;
 	}
 
 	public void addAtIndex(int index, Object value) {
@@ -129,5 +117,20 @@ public class MyList {
 			index++;
 		}
 		return out;
+	}
+
+	private void isOutOfBounds(int index) {
+		if (index < 0 || index >= mListSize) {
+			throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + mListSize);
+		}
+	}
+
+	private MyNode findeNodeAtIndex(int index) {
+		isOutOfBounds(index);
+		MyNode temp = begin();
+		for (int i = 0; i < index; i++) {
+			temp = temp.getNext();
+		}
+		return temp;
 	}
 }
