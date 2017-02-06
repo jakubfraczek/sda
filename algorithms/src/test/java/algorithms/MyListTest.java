@@ -147,7 +147,16 @@ public class MyListTest {
 		assertEquals(23, myIntList.getValue(2));
 		assertEquals(22, myIntList.getValue(3));
 	}
+	
+	@Test
+	public void swapSameTest() {
+		myIntList.swap(0, 0);
+	}
 
+	@Test (expected = IndexOutOfBoundsException.class)
+	public void swapBoundTest() {
+		myIntList.swap(-1, 0);
+	}
 	@Test
 	public void sortTest() {
 		fail("Not yet implemented");
