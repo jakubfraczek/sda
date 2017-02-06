@@ -10,12 +10,12 @@ import myList.MyList;
 
 public class MyListTest {
 
-	MyList myIntList, myStringList, myIntList2;
+	MyList myIntList, myIntList2, myStringList, myStringList2;
 
 	@Before
 	public void setUp() throws Exception {
 		myIntList = new MyList();
-		for (int i = 21; i <= 23; i++) {
+		for (int i = 21; i <= 24; i++) {
 			myIntList.add(i);
 		}
 		myStringList = new MyList();
@@ -30,11 +30,12 @@ public class MyListTest {
 				myIntList2.add(i);
 			}
 		}
+		myStringList2 = new MyList();
 	}
 
 	@Test
 	public void lastElementTest() {
-		assertEquals(23, myIntList.getValue(myIntList.last()));
+		assertEquals(24, myIntList.getValue(myIntList.last()));
 	}
 
 	@Test
@@ -49,42 +50,49 @@ public class MyListTest {
 
 	@Test
 	public void lengthTest() {
-		assertEquals(3, myIntList.length());
+		assertEquals(4, myIntList.length());
 	}
 
 	@Test
 	public void addElementAtEndTest() {
-		myIntList.add(24);
-		assertEquals(4, myIntList.length());
-		assertEquals(24, myIntList.getValue(myIntList.last()));
+		myIntList.add(25);
+		assertEquals(5, myIntList.length());
+		assertEquals(25, myIntList.getValue(myIntList.last()));
 	}
 
 	@Test
 	public void addElementAtFrontTest() {
 		myIntList.addAtFront(20);
-		assertEquals(4, myIntList.length());
+		assertEquals(5, myIntList.length());
 		assertEquals(20, myIntList.getValue(0));
 		assertEquals(21, myIntList.getValue(1));
 	}
 
 	@Test
+	public void addToEmptyListTest() {
+		myStringList2.add("Justyna");
+		assertEquals(1, myStringList2.length());
+		assertEquals("Justyna", myStringList2.getValue(0));
+	}
+
+	@Test
 	public void addElementAtIndexTest() {
-		myIntList.addAtIndex(2, 24);
-		assertEquals(4, myIntList.length());
-		assertEquals(24, myIntList.getValue(2));
+		myIntList.addAtIndex(2, 25);
+		assertEquals(5, myIntList.length());
+		assertEquals(25, myIntList.getValue(2));
 	}
 
 	@Test
 	public void removeElementByIndexTest() {
 		myIntList.remove(1);
-		assertEquals(2, myIntList.length());
+		assertEquals(3, myIntList.length());
 		assertEquals(23, myIntList.getValue(1));
 	}
 
 	@Test
 	public void removeElementByIndexBoundTest() {
 		myIntList.remove(0);
-		assertEquals(2, myIntList.length());
+		assertEquals(3, myIntList.length());
 		assertEquals(22, myIntList.getValue(0));
 	}
 
@@ -96,7 +104,7 @@ public class MyListTest {
 	@Test
 	public void removeElementByValueTest() {
 		myIntList.removeValue(22);
-		assertEquals(2, myIntList.length());
+		assertEquals(3, myIntList.length());
 		assertEquals(23, myIntList.getValue(1));
 	}
 
@@ -109,7 +117,7 @@ public class MyListTest {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void toBigIndextest() {
-		myIntList.getValue(3);
+		myIntList.getValue(4);
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
@@ -131,7 +139,13 @@ public class MyListTest {
 
 	@Test
 	public void swapTest() {
-		fail("Not yet implemented");
+		myIntList.swap(1, 3);
+		myIntList.write();
+
+		assertEquals(21, myIntList.getValue(0));
+		assertEquals(24, myIntList.getValue(1));
+		assertEquals(23, myIntList.getValue(2));
+		assertEquals(22, myIntList.getValue(3));
 	}
 
 	@Test

@@ -22,9 +22,9 @@ public class MyList {
 	}
 
 	public void addAtFront(Object value) {
-		mListSize++;
-		MyNode newNode = new MyNode(value, mHead.getNext());
+		MyNode newNode = new MyNode(value, mHead);
 		mHead = newNode;
+		mListSize++;
 	}
 
 	public void add(Object value) {
@@ -65,14 +65,14 @@ public class MyList {
 	public void removeAllOf(Object value) {
 		MyNode temp = mHead;
 		while (temp != null) {
-			if (temp.getValue() == value){
+			if (temp.getValue() == value) {
 				MyNode next = temp.getNext();
 				removeValue(value);
 				temp = next;
 			} else {
 				temp = temp.getNext();
 			}
-			
+
 		}
 	}
 
@@ -132,5 +132,28 @@ public class MyList {
 			temp = temp.getNext();
 		}
 		return temp;
+	}
+
+	public void swap(int index1, int index2) {
+		isOutOfBounds(index1);
+		isOutOfBounds(index2);
+		if (index1 == 0 || index2 == 0) {
+
+		} else {
+			MyNode temp1 = findeNodeAtIndex(index1);
+			MyNode temp2 = findeNodeAtIndex(index2);
+			MyNode next1 = temp1.getNext();
+			temp1.setNext(temp2.getNext());
+			temp2.setNext(next1);
+		}
+	}
+
+	public void write() {
+		MyNode temp = mHead;
+		int index = 0;
+		while (temp != null) {
+			System.out.println("Index: " + index++ + ", value: " + temp.getValue());
+			temp = temp.getNext();
+		}
 	}
 }
