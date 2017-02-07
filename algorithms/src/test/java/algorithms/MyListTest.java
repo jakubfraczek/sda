@@ -139,18 +139,28 @@ public class MyListTest {
 
 	@Test
 	public void swapTest() {
-		myIntList.swap(1, 3);
-		myIntList.write();
+		myIntList.swap(1, 2);
 
 		assertEquals(21, myIntList.getValue(0));
-		assertEquals(24, myIntList.getValue(1));
-		assertEquals(23, myIntList.getValue(2));
-		assertEquals(22, myIntList.getValue(3));
+		assertEquals(23, myIntList.getValue(1));
+		assertEquals(22, myIntList.getValue(2));
+		assertEquals(24, myIntList.getValue(3));
 	}
 	
 	@Test
 	public void swapSameTest() {
-		myIntList.swap(0, 0);
+		Object temp = myIntList.getValue(1);
+		myIntList.swap(1, 1);
+		assertEquals(temp, myIntList.getValue(1));
+	}
+	
+	@Test
+	public void swapIndexZeroTest() {
+		myIntList.swap(2, 0);
+		assertEquals(23, myIntList.getValue(0));
+		assertEquals(22, myIntList.getValue(1));
+		assertEquals(21, myIntList.getValue(2));
+		assertEquals(24, myIntList.getValue(3));
 	}
 
 	@Test (expected = IndexOutOfBoundsException.class)

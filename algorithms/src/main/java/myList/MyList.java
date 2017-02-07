@@ -134,17 +134,35 @@ public class MyList {
 		return temp;
 	}
 
-	public void swap(int index1, int index2) {
-		isOutOfBounds(index1);
-		isOutOfBounds(index2);
-		if (index1 == 0 || index2 == 0) {
+	public void swap(int indexOfFirstElement, int indexOfSecoundElement) {
+		isOutOfBounds(indexOfFirstElement);
+		isOutOfBounds(indexOfSecoundElement);
+		if (indexOfFirstElement == indexOfSecoundElement) {
+			return;
+		} else if (indexOfFirstElement == 0) {
+			MyNode temp1 = findeNodeAtIndex(indexOfFirstElement);
+			MyNode beforeTemp2 = findeNodeAtIndex(indexOfSecoundElement - 1);
+			MyNode temp2 = beforeTemp2.getNext();
+			MyNode next = temp1.getNext();
 
-		} else {
-			MyNode temp1 = findeNodeAtIndex(index1);
-			MyNode temp2 = findeNodeAtIndex(index2);
-			MyNode next1 = temp1.getNext();
 			temp1.setNext(temp2.getNext());
-			temp2.setNext(next1);
+			beforeTemp2.setNext(temp1);
+			temp2.setNext(next);
+			mHead = temp2;
+
+		} else if (indexOfSecoundElement == 0) {
+			swap(indexOfSecoundElement, indexOfFirstElement);
+		} else {
+			MyNode beforeTemp1 = findeNodeAtIndex(indexOfFirstElement - 1);
+			MyNode temp1 = beforeTemp1.getNext();
+			MyNode beforeTemp2 = findeNodeAtIndex(indexOfSecoundElement - 1);
+			MyNode temp2 = beforeTemp2.getNext();
+			MyNode next = temp2.getNext();
+
+			beforeTemp2.setNext(temp1);
+			beforeTemp1.setNext(temp2);
+			temp2.setNext(temp1.getNext());
+			temp1.setNext(next);
 		}
 	}
 
