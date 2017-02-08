@@ -174,4 +174,19 @@ public class MyList {
 			temp = temp.getNext();
 		}
 	}
+
+	public void removeDuplicated() {
+		MyNode temp1 = mHead;
+		while (temp1 != null) {
+			MyNode temp2 = mHead;
+			while (temp2 != null) {
+				if (temp2.getNext() != null && temp2.getValue() == temp2.getNext().getValue() ) {
+					int index = getIndexOf(temp2.getNext().getValue());
+					remove(index);
+				}
+				temp2 = temp2.getNext();
+			}
+			temp1 = temp1.getNext();
+		}
+	}
 }

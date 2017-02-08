@@ -200,12 +200,15 @@ public class MyListTest {
 		for (int i = 0; i < myStringList.length(); i++) {
 			assertEquals("Jakub", myStringList.getValue(i));
 		}
-		// fail("Not yet implemented");
 	}
 
 	@Test
 	public void removeDuplicatedTest() {
-		fail("Not yet implemented");
+		myStringList.removeDuplicated();
+		assertEquals(2, myStringList.length());
+		assertEquals("Kuba", myStringList.getValue(0));
+		assertEquals("Jakub", myStringList.getValue(1));
+//		fail("Not yet implemented");
 	}
 
 }
