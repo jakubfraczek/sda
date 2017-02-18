@@ -10,7 +10,7 @@ public class User {
     private Address address;
     private String phoneNumber;
     private String creditCard;
-    private Pesel pesel;
+    private String pesel;
 
     public User() {
 		
@@ -72,13 +72,36 @@ public class User {
         this.creditCard = creditCard;
     }
 
-    public Pesel getPesel() {
+    public String getPesel() {
         return pesel;
     }
 
-    public void setPesel(Pesel pesel) {
+    public void setPesel(String pesel) {
         this.pesel = pesel;
     }
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("");
+		builder.append(firstName);
+		builder.append(" ");
+		builder.append(lastName);
+		builder.append(", ");
+		builder.append(sex.getSex());
+		builder.append(", ur. ");
+		builder.append(birthDate);
+		builder.append("\naddress:\n");
+		builder.append(address);
+		builder.append("\nnumer: ");
+		builder.append(phoneNumber);
+		builder.append(", creditCard: ");
+		builder.append(creditCard);
+		builder.append(", pesel: ");
+		builder.append(pesel);
+		builder.append("");
+		return builder.toString();
+	}
 
 
 }

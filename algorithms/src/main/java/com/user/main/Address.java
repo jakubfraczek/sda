@@ -4,12 +4,12 @@ package com.user.main;
 public class Address {
 
 	private String streetName;
-	private String streetNumber;
-	private String homeNumber;
+	private int streetNumber;
+	private int homeNumber;
 	private String cityName;
 	private String cityPostCode;
 
-	public Address(String streetName, String streetNumber, String homeNumber, String cityName, String cityPostCode) {
+	public Address(String streetName, int streetNumber, int homeNumber, String cityName, String cityPostCode) {
 		this.streetName = streetName;
 		this.streetNumber = streetNumber;
 		this.homeNumber = homeNumber;
@@ -25,19 +25,19 @@ public class Address {
 		this.streetName = streetName;
 	}
 
-	public String getStreetNumber() {
+	public int getStreetNumber() {
 		return streetNumber;
 	}
 
-	public void setStreetNumber(String streetNumber) {
+	public void setStreetNumber(int streetNumber) {
 		this.streetNumber = streetNumber;
 	}
 
-	public String getHomeNumber() {
+	public int getHomeNumber() {
 		return homeNumber;
 	}
 
-	public void setHomeNumber(String homeNumber) {
+	public void setHomeNumber(int homeNumber) {
 		this.homeNumber = homeNumber;
 	}
 
@@ -59,10 +59,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "ul. " + streetName + " " + streetNumber + " m. " + homeNumber
-				+ "\n " + cityName + ", " + cityPostCode;
+		return streetName + " " + streetNumber + " m. " + homeNumber + "\n" + cityPostCode + ", " + cityName;
 	}
-	
-	
 
 }
