@@ -1,15 +1,16 @@
 package com.user.main;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.MissingResourceException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class UserGenerator {
 
 	private User u = new User();
-	private String path = "src\\main\\java\\com\\user\\sources\\";
+	private String path = "src/main/java/com/user/sources/";
 
 	public User getUser() {
 		return u;
@@ -67,7 +68,7 @@ public class UserGenerator {
 			date.append(month);
 		}
 		date.append(".").append(year).append(" r.");
-		
+
 		return date.toString();
 	}
 
@@ -85,16 +86,15 @@ public class UserGenerator {
 		}
 
 		int sex = u.getSex().getId();
-		if (sex == 1) {
+		if (sex == 2) {
 			pesel.append((generateRandomNumber(0, 9) / 2) * 2);
 		} else {
-			pesel.append(((generateRandomNumber(1, 9) / 2) * 2) - 1);
+			pesel.append(((generateRandomNumber(0, 9) / 2) * 2) + 1);
 		}
 
 		String str = pesel.toString();
 		String key = "9731973191";
 		int sum = 0;
-		System.out.println(str);
 		for (int i = 0; i < str.length(); i++) {
 			sum += Integer.parseInt(str.charAt(i) + "") * Integer.parseInt(key.charAt(i) + "");
 		}
@@ -116,8 +116,8 @@ public class UserGenerator {
 	public String generateLastName() {
 		ArrayList<String> lastNames = fileInput("nazwiska.txt");
 		String lastName = lastNames.get(generateRandomNumber(0, lastNames.size() - 1));
-		if (u.getSex() == UserSex.SEX_F && lastName.endsWith("i")) {
-			lastName.replace(lastName.substring(lastName.length() - 1), "a");
+		if (u.getSex() == UserSex.SEX_F && lastName.substring(lastName.length()-3).equalsIgnoreCase("ski")) {
+			lastName = lastName.substring(0, lastName.length() - 1) + "a";
 		}
 		return lastName;
 	}
@@ -169,7 +169,6 @@ public class UserGenerator {
 	private UserSex generateRandomSex() {
 		UserSex sex;
 		int id = generateRandomNumber(0, 2);
-		System.out.println(id);
 		if (id == 1) {
 			sex = UserSex.SEX_M;
 		} else {
@@ -180,12 +179,12 @@ public class UserGenerator {
 
 	private ArrayList<String> fileInput(String file) {
 		ArrayList<String> input = new ArrayList<>();
-		try (Scanner sc = new Scanner(Paths.get(path, file))) {
+		try (Scanner sc = new Scanner(new File(path + file))) {
 			while (sc.hasNext()) {
 				input.add(sc.nextLine());
 			}
 		} catch (IOException e) {
-			System.err.println("File not found");
+			throw new MissingResourceException(file, path, null);
 		}
 		return input;
 	}
