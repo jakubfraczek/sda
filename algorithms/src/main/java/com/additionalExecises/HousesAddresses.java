@@ -1,4 +1,4 @@
-package additionalExecises;
+package com.additionalExecises;
 
 public class HousesAddresses {
 
@@ -13,6 +13,26 @@ public class HousesAddresses {
 			}
 		}
 
+	}
+	
+	//prowadzacego
+	public void getPostCodes(String arg, String arg2) {
+		// 1. Pozbywamy się '-' z kodów pocztowych (z argumentów)
+		
+		arg = arg.replace("-", "");
+		arg2 = arg2.replace("-", "");
+		
+		// 2. Rzutujemy na int'a nasze kody bez '-' 
+		int startRange = Integer.parseInt(arg),
+			stopRange = Integer.parseInt(arg2);
+		String currentCode;
+		// 3. itermujemy sie od arg:int do arg2:int
+		for( int i = startRange; i <= stopRange; i++) {
+			currentCode = "" + i;
+			// a. drukujemy kod jako string, z tym, ze dodajemy - po dwoch pierwszych cyfrach
+			//		(mozna to zrobic np. wykorzystujac substring'a)
+			System.out.println(currentCode.substring(0, 2) + "-" + currentCode.substring(2));
+		}
 	}
 
 	public void getPostalCodes(String fisrtPostalCode, String secondPostalCode) {
