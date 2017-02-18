@@ -1,5 +1,5 @@
 
-package com.user;
+package com.user.main;
 
 public class User {
 
@@ -12,17 +12,8 @@ public class User {
     private String creditCard;
     private Pesel pesel;
 
-    public User(String firstName, String lastName, UserSex sex, String birthDate, Address address, String phoneNumber,
-    		String creditCard) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.sex = sex;
-		this.birthDate = birthDate;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.creditCard = creditCard;
-		pesel = new Pesel(birthDate, sex);
+    public User() {
+		
 	}
 
 	public String getFirstName() {

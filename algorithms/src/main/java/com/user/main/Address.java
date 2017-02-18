@@ -1,5 +1,5 @@
 
-package com.user;
+package com.user.main;
 
 public class Address {
 
