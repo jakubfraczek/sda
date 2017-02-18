@@ -1,64 +1,68 @@
 
 package com.user;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Address {
 
-    private String streetName;
-    private String streetNumber;
-    private String homeNumber;
-    private String cityName;
-    private String cityPostCode;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private String streetName;
+	private String streetNumber;
+	private String homeNumber;
+	private String cityName;
+	private String cityPostCode;
 
-    public String getStreetName() {
-        return streetName;
-    }
+	public Address(String streetName, String streetNumber, String homeNumber, String cityName, String cityPostCode) {
+		this.streetName = streetName;
+		this.streetNumber = streetNumber;
+		this.homeNumber = homeNumber;
+		this.cityName = cityName;
+		this.cityPostCode = cityPostCode;
+	}
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
+	public String getStreetName() {
+		return streetName;
+	}
 
-    public String getStreetNumber() {
-        return streetNumber;
-    }
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
 
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
-    }
+	public String getStreetNumber() {
+		return streetNumber;
+	}
 
-    public String getHomeNumber() {
-        return homeNumber;
-    }
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
 
-    public void setHomeNumber(String homeNumber) {
-        this.homeNumber = homeNumber;
-    }
+	public String getHomeNumber() {
+		return homeNumber;
+	}
 
-    public String getCityName() {
-        return cityName;
-    }
+	public void setHomeNumber(String homeNumber) {
+		this.homeNumber = homeNumber;
+	}
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
+	public String getCityName() {
+		return cityName;
+	}
 
-    public String getCityPostCode() {
-        return cityPostCode;
-    }
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
 
-    public void setCityPostCode(String cityPostCode) {
-        this.cityPostCode = cityPostCode;
-    }
+	public String getCityPostCode() {
+		return cityPostCode;
+	}
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
+	public void setCityPostCode(String cityPostCode) {
+		this.cityPostCode = cityPostCode;
+	}
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "ul. " + streetName + " " + streetNumber + " m. " + homeNumber
+				+ "\n " + cityName + ", " + cityPostCode;
+	}
+	
+	
 
 }
