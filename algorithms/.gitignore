@@ -1,2 +1,8 @@
 /bin/
 /target/
+src/main/.DS_Store
+src/main/java/.DS_Store
+src/main/java/com/.DS_Store
+src/main/java/com/user/.DS_Store
+src/test/.DS_Store
+src/test/java/.DS_Store
