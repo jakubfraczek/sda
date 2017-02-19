@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class UserGenerator {
 
 	private User u = new User();
-	private String path = "src/main/java/com/user/sources/";
+	private String path = "src/additional/java/com/user/sources/";
 
 	public User getUser() {
 		return u;
