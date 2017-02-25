@@ -1,13 +1,21 @@
 package aplicationServers;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JULDemo {
 
-	static final Logger logger = Logger.getLogger("JULDemo");
-	
+	private static final Logger LOGGER = Logger.getLogger(JULDemo.class.getCanonicalName());
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		LOGGER.setLevel(Level.WARNING);
+
+		LOGGER.info("hello logger");
+		try {
+			double test = 1 / 0;
+		} catch (ArithmeticException e) {
+			LOGGER.warning(e.toString());
+		}
 
 	}
 
